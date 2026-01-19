@@ -1,0 +1,104 @@
+---
+// Import Components
+import Header from '../components/Header.astro';
+import CTAModal from '../components/CTAModal.astro';
+import Footer from '../components/Footer.astro';
+
+// Interface untuk Props (TypeScript membantu kita disiplin mengisi data SEO per halaman)
+interface Props {
+	title: string;
+	description: string;
+	image?: string;
+	type?: 'website' | 'article';
+}
+
+const { 
+  title, 
+  description, 
+  image = "/images/default-og.jpg", // Siapkan gambar default nanti
+  type = "website" 
+} = Astro.props;
+
+// Canonical URL (PENTING untuk SEO)
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// Schema.org: Organization (Wajib untuk B2B Trust)
+const schemaOrg = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Tropical Coco Indonesia",
+  "url": Astro.site,
+  "logo": new URL("/logo.png", Astro.site),
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+62-812-XXXX-XXXX",
+    "contactType": "sales",
+    "areaServed": "World",
+    "availableLanguage": ["English", "Indonesian"]
+  }
+});
+
+// Schema.org: Breadcrumbs (Dynamic)
+const breadcrumbs = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": Astro.site
+    },
+    // Logika tambahan bisa dimasukkan di sini jika URL makin dalam
+  ]
+});
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+
+        <title>{title} | Tropical Coco Indonesia</title>
+		<meta name="description" content={description} />
+        <link rel="canonical" href={canonicalURL} />
+        <meta name="robots" content="index, follow" />
+
+        <meta property="og:type" content={type} />
+        <meta property="og:url" content={Astro.url} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={new URL(image, Astro.site)} />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={Astro.url} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content={new URL(image, Astro.site)} />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+        <script type="application/ld+json" set:html={schemaOrg} />
+        <script type="application/ld+json" set:html={breadcrumbs} />
+
+        <slot name="head-schema" />
+	</head>
+	<body class="bg-coco-light font-sans text-coco-black antialiased flex flex-col min-h-screen">
+		
+        <Header />
+
+        <main class="flex-grow">
+			<slot /> 
+		</main>
+
+        <Footer />
+
+        <CTAModal />
+
+	</body>
+</html>

@@ -1,0 +1,190 @@
+<div id="quote-modal" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  <div class="fixed inset-0 bg-coco-black/70 backdrop-blur-sm transition-opacity opacity-0" id="modal-backdrop"></div>
+  
+  <div class="fixed inset-0 z-10 overflow-y-auto">
+    <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+      
+      <div id="modal-panel" class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
+        
+        <div class="bg-coco-dark px-6 py-4 flex justify-between items-center border-b border-gray-700">
+          <div>
+              <h3 class="text-lg font-bold text-white" id="modal-title">Request for Quotation</h3>
+              <p class="text-xs text-gray-300 mt-1">Direct connect with our Sales Team.</p>
+          </div>
+          <button id="close-modal-btn" class="text-gray-400 hover:text-white transition-colors focus:outline-none">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="flex border-b border-gray-200">
+          <button id="tab-wa" class="flex-1 py-3 text-sm font-semibold text-coco-dark border-b-2 border-coco-dark bg-gray-50 hover:bg-white transition-all flex items-center justify-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            Via WhatsApp (Fast)
+          </button>
+          <button id="tab-email" class="flex-1 py-3 text-sm font-semibold text-gray-500 hover:text-coco-dark border-b-2 border-transparent hover:border-gray-300 transition-all flex items-center justify-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            Via Email Quote
+          </button>
+        </div>
+
+        <div class="p-6">
+          <form id="rfq-form" class="space-y-4">
+            
+            <input type="hidden" id="submission-mode" value="whatsapp">
+
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Your Name <span class="text-red-500">*</span></label>
+                    <input type="text" id="inp-name" required class="w-full border border-gray-300 px-3 py-2 rounded text-sm focus:ring-1 focus:ring-coco-dark focus:border-coco-dark outline-none transition-colors" placeholder="John Doe">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Company Name</label>
+                    <input type="text" id="inp-company" class="w-full border border-gray-300 px-3 py-2 rounded text-sm focus:ring-1 focus:ring-coco-dark focus:border-coco-dark outline-none transition-colors" placeholder="PT. Maju Mundur">
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Phone / WA <span class="text-red-500">*</span></label>
+                    <input type="tel" id="inp-phone" required class="w-full border border-gray-300 px-3 py-2 rounded text-sm focus:ring-1 focus:ring-coco-dark focus:border-coco-dark outline-none transition-colors" placeholder="+62...">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Need <span class="text-red-500">*</span></label>
+                    <select id="inp-type" class="w-full border border-gray-300 px-3 py-2 rounded text-sm focus:ring-1 focus:ring-coco-dark focus:border-coco-dark outline-none transition-colors bg-white">
+                        <option value="Bulk (Industrial)">Bulk (Industrial Supply)</option>
+                        <option value="OEM / Private Label">OEM / Private Label</option>
+                        <option value="Sample Request">Sample Request</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+               <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Official Email <span class="text-red-500">*</span></label>
+               <input type="email" id="inp-email" required class="w-full border border-gray-300 px-3 py-2 rounded text-sm focus:ring-1 focus:ring-coco-dark focus:border-coco-dark outline-none transition-colors" placeholder="purchasing@company.com">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Message / Specs Details</label>
+              <textarea id="inp-message" rows="3" class="w-full border border-gray-300 px-3 py-2 rounded text-sm focus:ring-1 focus:ring-coco-dark focus:border-coco-dark outline-none transition-colors" placeholder="I need 10 Tons of Organic Coconut Sugar delivered to..."></textarea>
+            </div>
+
+            <button type="submit" id="submit-btn" class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-3 rounded shadow transition-all flex items-center justify-center gap-2">
+               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+               Chat on WhatsApp
+            </button>
+            <p class="text-[10px] text-gray-400 text-center mt-2" id="disclaimer-text">You will be redirected to WhatsApp Web/App to send the message.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  // --- 1. SETUP GLOBAL FUNCTION (WAJIB ADA) ---
+  // Fungsi ini ditempel ke 'window' agar bisa dipanggil dari mana saja
+  window.openQuoteModal = function() {
+    const modal = document.getElementById('quote-modal');
+    const modalPanel = document.getElementById('modal-panel');
+    const backdrop = document.getElementById('modal-backdrop');
+
+    if (!modal || !modalPanel || !backdrop) {
+        console.error("Modal elements not found!");
+        return;
+    }
+    
+    // Buka Modal
+    modal.classList.remove('hidden');
+    
+    // Animasi Masuk
+    setTimeout(() => {
+      backdrop.classList.remove('opacity-0');
+      modalPanel.classList.remove('opacity-0', 'translate-y-4', 'sm:translate-y-0', 'sm:scale-95');
+    }, 10);
+  };
+
+  // --- 2. SETUP EVENT LISTENERS (Saat halaman selesai loading) ---
+  document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('quote-modal');
+      const modalPanel = document.getElementById('modal-panel');
+      const backdrop = document.getElementById('modal-backdrop');
+      const closeBtn = document.getElementById('close-modal-btn');
+      
+      // Logic Tutup Modal
+      function closeModal() {
+        if (!modal || !modalPanel || !backdrop) return;
+        backdrop.classList.add('opacity-0');
+        modalPanel.classList.add('opacity-0', 'translate-y-4', 'sm:translate-y-0', 'sm:scale-95');
+        setTimeout(() => { modal.classList.add('hidden'); }, 300);
+      }
+
+      // Pasang Listener Tutup
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      if (backdrop) backdrop.addEventListener('click', closeModal);
+
+      // --- LOGIC TABS (WA vs EMAIL) ---
+      const tabWa = document.getElementById('tab-wa');
+      const tabEmail = document.getElementById('tab-email');
+      const submitBtn = document.getElementById('submit-btn');
+      const modeInput = document.getElementById('submission-mode');
+      const disclaimerText = document.getElementById('disclaimer-text');
+
+      function setMode(mode) {
+        if(!modeInput || !submitBtn || !tabWa || !tabEmail) return;
+        modeInput.value = mode;
+
+        // Reset Style
+        const baseClass = "flex-1 py-3 text-sm flex items-center justify-center gap-2 transition-all cursor-pointer";
+        const activeStyle = "text-coco-dark border-b-2 border-coco-dark bg-gray-50 font-semibold";
+        const inactiveStyle = "text-gray-500 border-b-2 border-transparent hover:border-gray-300 font-semibold";
+
+        tabWa.className = `${baseClass} ${mode === 'whatsapp' ? activeStyle : inactiveStyle}`;
+        tabEmail.className = `${baseClass} ${mode === 'email' ? activeStyle : inactiveStyle}`;
+
+        if (mode === 'whatsapp') {
+            submitBtn.className = "w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-3 rounded shadow transition-all flex items-center justify-center gap-2";
+            submitBtn.innerHTML = `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg> Chat on WhatsApp`;
+            if(disclaimerText) disclaimerText.innerText = "Redirecting to WhatsApp...";
+        } else {
+            submitBtn.className = "w-full bg-coco-gold hover:bg-yellow-600 text-coco-black font-bold py-3 rounded shadow transition-all flex items-center justify-center gap-2";
+            submitBtn.innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg> Send Request via Email`;
+            if(disclaimerText) disclaimerText.innerText = "Opens your default email client.";
+        }
+      }
+
+      if(tabWa) tabWa.addEventListener('click', () => setMode('whatsapp'));
+      if(tabEmail) tabEmail.addEventListener('click', () => setMode('email'));
+
+      // --- LOGIC KIRIM FORM ---
+      const form = document.getElementById('rfq-form');
+      // KONFIGURASI DI SINI
+      const ADMIN_WA = "6281234567890"; 
+      const ADMIN_EMAIL = "sales@tropicalcocoindonesia.com"; 
+
+      if(form) {
+          form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const mode = modeInput.value;
+            const name = document.getElementById('inp-name').value;
+            const company = document.getElementById('inp-company').value || "-";
+            const type = document.getElementById('inp-type').value;
+            const email = document.getElementById('inp-email').value;
+            const message = document.getElementById('inp-message').value;
+
+            if(!name || !email) { alert("Please fill required fields."); return; }
+
+            if(mode === 'whatsapp') {
+                const text = `*NEW RFQ - Tropical Coco*%0A%0A*Name:* ${name}%0A*Company:* ${company}%0A*Email:* ${email}%0A*Type:* ${type}%0A%0A*Msg:*%0A${message}`;
+                window.open(`https://wa.me/${ADMIN_WA}?text=${text}`, '_blank');
+            } else {
+                const subject = `RFQ from ${company} - ${type}`;
+                const body = `Hi Tropical Coco,%0D%0A%0D%0ARFQ Details:%0D%0A*Name:* ${name}%0D%0A*Company:* ${company}%0D%0A*Type:* ${type}%0D%0A%0D%0A*Message:*%0D%0A${message}`;
+                window.location.href = `mailto:${ADMIN_EMAIL}?subject=${encodeURIComponent(subject)}&body=${body}`;
+            }
+            closeModal();
+          });
+      }
+  });
+</script>
