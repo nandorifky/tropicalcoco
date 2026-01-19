@@ -1,1 +1,10 @@
-@import "tailwindcss";
+/* src/styles/global.css */
+
+/* HAPUS: @import "tailwindcss"; */
+
+/* GANTI DENGAN INI: */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Sisa CSS Anda di bawahnya biarkan saja */
