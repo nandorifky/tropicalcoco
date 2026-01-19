@@ -90,15 +90,14 @@ const breadcrumbs = JSON.stringify({
 	</head>
 	<body class="bg-coco-light font-sans text-coco-black antialiased flex flex-col min-h-screen">
 		
-        <Header />
+<Header />
+    
+    <main>
+       <slot />
+    </main>
 
-        <main class="flex-grow">
-			<slot /> 
-		</main>
+    <Footer />
 
-        <Footer />
-
-        <CTAModal />
-
-	</body>
+    <CTAModal /> 
+</body>
 </html>

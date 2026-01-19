@@ -2,55 +2,41 @@
 import Layout from '../layouts/Layout.astro';
 
 // SEO Constants
-const TITLE = "Organic Coconut Sugar Manufacturer Indonesia | Bulk & OEM Supplier";
-const DESCRIPTION = "Direct factory supplier of Organic Coconut Sugar (Granulated, Nectar, Block). HACCP, USDA, EU Organic certified. Low moisture (<2%), High solubility. Global shipping.";
+const TITLE = "Organic Coconut Sugar Manufacturer Indonesia | Bulk Supplier (Factory Direct)";
+const DESCRIPTION = "Leading supplier of Organic Coconut Sugar (Granules & Powder). Low moisture (<2%), HACCP & USDA Certified. Bulk 25kg & OEM Private Label from Indonesia.";
 
-// 1. PRODUCT SCHEMA (Rich Result)
-const productSchema = {
-  "@context": "https://schema.org/",
-  "@type": "Product",
-  "name": "Organic Coconut Sugar Bulk (Export Grade)",
-  "image": "https://placehold.co/800x800/png?text=Organic+Coconut+Sugar+Bulk",
-  "description": "Certified organic coconut sugar for industrial application. Low glycemic index, unrefined, and high nutrient profile. Available in 25kg bulk packaging.",
-  "brand": { "@type": "Brand", "name": "Tropical Coco Indonesia" },
-  "sku": "TCI-BULK-001",
-  "offers": {
-    "@type": "AggregateOffer",
-    "priceCurrency": "USD",
-    "lowPrice": "1600",
-    "highPrice": "2400",
-    "offerCount": "10",
-    "availability": "https://schema.org/InStock"
-  }
-};
-
-// 2. FAQ SCHEMA (Untuk Google 'People Also Ask')
-const faqSchema = {
+// JSON-LD Schema untuk Homepage (Organization & Product)
+const schemaData = {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "What is the Minimum Order Quantity (MOQ) for export?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For Bulk packaging (25kg sacks), our MOQ is 1,000 kg (1 Ton) for LCL shipments. For Full Container Load (FCL), we recommend 20ft (approx 18 Tons) for cost efficiency."
-      }
+      "@type": "Organization",
+      "name": "Tropical Coco Indonesia",
+      "url": "https://tropicalcocoindonesia.com",
+      "logo": "https://tropicalcocoindonesia.com/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+62-812-3456-7890",
+        "contactType": "sales",
+        "areaServed": "Global"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/tropical-coco-indonesia",
+        "https://www.instagram.com/tropicalcoco.id"
+      ]
     },
     {
-      "@type": "Question",
-      "name": "Are your products certified organic?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, we hold valid certificates for USDA NOP, EU Organic, and JAS. We are also HACCP and Halal certified."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can you do Private Label / OEM?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, we provide end-to-end OEM services. We can pack in standing pouches (250g, 500g, 1kg) or jars with your brand design."
+      "@type": "Product",
+      "name": "Organic Coconut Sugar (Bulk Export Grade)",
+      "description": "Premium granulated organic coconut sugar with low moisture content for industrial food application.",
+      "brand": "Tropical Coco Indonesia",
+      "sku": "TCI-BULK-25",
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "availability": "InStock",
+        "lowPrice": "1500",
+        "highPrice": "2500"
       }
     }
   ]
@@ -58,187 +44,287 @@ const faqSchema = {
 ---
 
 <Layout title={TITLE} description={DESCRIPTION}>
-  
+
   <fragment slot="head-schema">
-    <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
   </fragment>
 
-  <section class="relative bg-white border-b border-gray-200">
-      <div class="grid lg:grid-cols-2 min-h-[90vh]">
-          
-          <div class="flex flex-col justify-center px-6 lg:px-16 py-12 lg:py-0 order-2 lg:order-1 bg-white">
-              <div class="inline-flex items-center gap-2 mb-6">
-                  <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                  <span class="text-xs font-bold tracking-widest text-gray-500 uppercase">Ready Stock for Export</span>
-              </div>
-              
-              <h1 class="text-4xl lg:text-6xl font-extrabold text-coco-dark leading-[1.1] mb-6">
-                  Consistent Quality.<br>
-                  <span class="text-transparent bg-clip-text bg-gradient-to-r from-coco-gold to-yellow-600">Industrial Scale.</span>
-              </h1>
-              
-              <p class="text-lg text-gray-600 mb-8 leading-relaxed max-w-lg">
-                  We solve the supply chain instability of natural sweeteners. Get <strong>Standardized Organic Coconut Sugar</strong> directly from our factory in East Java.
-              </p>
+  <section class="relative bg-coco-dark text-white overflow-hidden min-h-[85vh] flex items-center">
+      <div class="absolute inset-0 z-0 opacity-20">
+          <img src="https://placehold.co/1920x1080/000000/FFFFFF/png?text=Factory+Process+Background" alt="Coconut Sugar Factory Indonesia" class="w-full h-full object-cover">
+      </div>
 
+      <div class="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+          <div>
+              <span class="inline-block py-1 px-3 border border-coco-gold text-coco-gold text-xs font-bold tracking-widest uppercase rounded mb-4">
+                  Direct Factory • Kediri, East Java
+              </span>
+              <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+                  Industrial Grade <br>
+                  <span class="text-coco-gold">Organic Coconut Sugar</span>
+              </h1>
+              <p class="text-lg text-gray-300 mb-8 leading-relaxed max-w-lg">
+                  We supply <strong>F&B Manufacturers</strong> and <strong>Global Distributors</strong> with certified organic sweeteners. Consistent low moisture (2%), standardized mesh size, and scalable capacity.
+              </p>
+              
               <div class="flex flex-col sm:flex-row gap-4">
-                  <button onclick="window.openQuoteModal()" class="bg-coco-dark text-white px-8 py-4 font-bold rounded shadow-lg hover:bg-coco-black transition-transform transform hover:-translate-y-1">
-                      Request Quote & Specs
+                  <button onclick="window.openQuoteModal()" class="bg-coco-gold text-coco-black px-8 py-4 font-bold rounded shadow-lg hover:bg-white transition-all transform hover:-translate-y-1">
+                      Request Quote & Sample
                   </button>
-                  <a href="#products" class="px-8 py-4 border-2 border-gray-200 text-coco-dark font-bold rounded hover:border-coco-dark transition-colors text-center">
-                      Browse Catalog
+                  <a href="#specs" class="px-8 py-4 border border-gray-500 text-white font-bold rounded hover:border-white hover:bg-white/10 transition-colors text-center">
+                      View Technical Data
                   </a>
               </div>
-
-              <div class="mt-12 pt-8 border-t border-gray-100">
-                  <p class="text-xs text-gray-400 mb-3 uppercase tracking-wider">Trusted by Industry Leaders in:</p>
-                  <div class="flex gap-6 opacity-60">
-                      <span class="text-sm font-bold text-gray-600 flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Global F&B</span>
-                      <span class="text-sm font-bold text-gray-600 flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg> Manufacturing</span>
-                      <span class="text-sm font-bold text-gray-600 flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg> Retail Chains</span>
-                  </div>
-              </div>
           </div>
-
-          <div class="relative h-[50vh] lg:h-auto order-1 lg:order-2 overflow-hidden bg-coco-light">
-              <img src="https://placehold.co/1000x1200/0D3B2E/FFFFFF/png?text=Factory+Spec+Coconut+Sugar" alt="Coconut Sugar Factory" class="absolute inset-0 w-full h-full object-cover">
-              
-              <div class="absolute bottom-8 left-8 bg-white/90 backdrop-blur p-6 rounded shadow-xl border-l-4 border-coco-gold max-w-xs hidden md:block">
-                  <p class="text-sm font-bold text-coco-dark mb-1">Lot No: TCI-2025-X</p>
-                  <p class="text-xs text-gray-600 mb-2">Moisture Content: 1.8%</p>
-                  <div class="flex items-center gap-2">
-                      <span class="px-2 py-0.5 bg-green-100 text-green-800 text-[10px] font-bold uppercase rounded">Passed Lab Test</span>
-                  </div>
+          
+          <div class="hidden md:block relative">
+              <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-xl shadow-2xl">
+                  <h3 class="text-xl font-bold mb-6 border-b border-gray-600 pb-2">Factory Capabilities</h3>
+                  <ul class="space-y-4 text-sm text-gray-300">
+                      <li class="flex justify-between">
+                          <span>Monthly Capacity:</span>
+                          <strong class="text-white">200 Metric Tons</strong>
+                      </li>
+                      <li class="flex justify-between">
+                          <span>Export Markets:</span>
+                          <strong class="text-white">USA, EU, Asia, Australia</strong>
+                      </li>
+                      <li class="flex justify-between">
+                          <span>Minimum Order:</span>
+                          <strong class="text-white">1,000 kg (LCL) / 18 MT (FCL)</strong>
+                      </li>
+                      <li class="flex justify-between">
+                          <span>Lead Time:</span>
+                          <strong class="text-white">14 - 21 Days</strong>
+                      </li>
+                  </ul>
               </div>
           </div>
       </div>
   </section>
 
-  <section class="bg-coco-dark text-white py-12">
-      <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/10">
-          <div>
-              <span class="block text-4xl font-bold text-coco-gold mb-1">200 MT</span>
-              <span class="text-xs text-gray-400 uppercase tracking-widest">Monthly Capacity</span>
-          </div>
-          <div>
-              <span class="block text-4xl font-bold text-coco-gold mb-1">&lt; 2%</span>
-              <span class="text-xs text-gray-400 uppercase tracking-widest">Moisture Guarantee</span>
-          </div>
-          <div>
-              <span class="block text-4xl font-bold text-coco-gold mb-1">100%</span>
-              <span class="text-xs text-gray-400 uppercase tracking-widest">Organic Certified</span>
-          </div>
-          <div>
-              <span class="block text-4xl font-bold text-coco-gold mb-1">15+</span>
-              <span class="text-xs text-gray-400 uppercase tracking-widest">Export Countries</span>
+  <section class="py-8 bg-gray-100 border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+          <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6">Certified for Global Compliance</p>
+          <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+              <img src="https://placehold.co/120x60/transparent/333?text=USDA" alt="USDA Organic" class="h-12 object-contain">
+              <img src="https://placehold.co/120x60/transparent/333?text=EU+Organic" alt="EU Organic" class="h-12 object-contain">
+              <img src="https://placehold.co/120x60/transparent/333?text=HACCP" alt="HACCP" class="h-12 object-contain">
+              <img src="https://placehold.co/120x60/transparent/333?text=Halal" alt="Halal Indonesia" class="h-12 object-contain">
+              <img src="https://placehold.co/120x60/transparent/333?text=ISO+22000" alt="ISO 22000" class="h-12 object-contain">
           </div>
       </div>
   </section>
 
-<section id="products" class="py-24 bg-gray-50">
+  <section class="py-24 bg-white">
       <div class="max-w-7xl mx-auto px-6">
-          <div class="text-center max-w-3xl mx-auto mb-16">
-              <span class="text-coco-gold font-bold tracking-widest uppercase text-sm">Our Core Products</span>
-              <h2 class="text-3xl font-bold text-coco-dark mt-2 mb-4">Choose Your Specification</h2>
-              <p class="text-gray-600">We produce distinct particle sizes to match your application requirements.</p>
+          <div class="text-center mb-16">
+              <h2 class="text-3xl md:text-4xl font-bold text-coco-dark mb-4">Our Core Product Variants</h2>
+              <p class="text-gray-600 max-w-2xl mx-auto">We process coconut sap into different forms to suit various industrial applications, from baking to beverage manufacturing.</p>
           </div>
 
           <div class="grid md:grid-cols-3 gap-8">
-              <div class="bg-white rounded border border-gray-200 overflow-hidden hover:shadow-xl transition-shadow group flex flex-col">
-                  <div class="h-60 overflow-hidden relative">
-                      <img src="https://placehold.co/600x400/png?text=Granules+Mesh+14-16" alt="Granulated Coconut Sugar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                      <div class="absolute top-4 right-4 bg-coco-gold text-black text-xs font-bold px-3 py-1 rounded">Flagship</div>
+              <article class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-xl transition-shadow group">
+                  <div class="h-64 bg-gray-100 overflow-hidden">
+                      <img src="https://placehold.co/600x400/png?text=Granules+Mesh+16" alt="Granulated Coconut Sugar" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
                   </div>
-                  <div class="p-8 flex-grow">
+                  <div class="p-8">
                       <h3 class="text-xl font-bold text-coco-dark mb-2">Organic Granules</h3>
-                      <p class="text-xs text-gray-400 font-bold uppercase mb-4">Mesh 14 - 16</p>
-                      <p class="text-sm text-gray-500 mb-6">Standard export grade. Crisp texture, distinct caramel notes. Perfect for coffee, tea, and table sugar.</p>
-                      <ul class="text-xs space-y-2 mb-8 text-gray-600">
-                          <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Moisture: &lt; 2.0%</li>
-                          <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Solubility: 99.8%</li>
-                      </ul>
+                      <p class="text-xs text-coco-gold font-bold uppercase mb-4">Mesh 14 - 16</p>
+                      <p class="text-gray-600 text-sm mb-6">Standard export grade with < 2% moisture. Excellent flowability for packaging and table use.</p>
+                      <a href="/products/organic-coconut-sugar-granules" class="text-coco-dark font-bold underline hover:text-coco-gold text-sm">View Specification &rarr;</a>
                   </div>
-                  <div class="p-8 pt-0 mt-auto">
-                      <a href="/products/organic-coconut-sugar-granules" class="w-full block text-center border-2 border-coco-dark text-coco-dark hover:bg-coco-dark hover:text-white font-bold py-3 rounded transition-colors">
-                          View Granules Specs
-                      </a>
-                  </div>
-              </div>
+              </article>
 
-              <div class="bg-white rounded border border-gray-200 overflow-hidden hover:shadow-xl transition-shadow group flex flex-col">
-                  <div class="h-60 overflow-hidden">
-                      <img src="https://placehold.co/600x400/png?text=Fine+Powder+Mesh+100" alt="Coconut Sugar Powder" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <article class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-xl transition-shadow group">
+                  <div class="h-64 bg-gray-100 overflow-hidden">
+                      <img src="https://placehold.co/600x400/png?text=Fine+Powder" alt="Coconut Sugar Powder" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
                   </div>
-                  <div class="p-8 flex-grow">
+                  <div class="p-8">
                       <h3 class="text-xl font-bold text-coco-dark mb-2">Fine Powder</h3>
-                      <p class="text-xs text-gray-400 font-bold uppercase mb-4">Mesh 80 - 100</p>
-                      <p class="text-sm text-gray-500 mb-6">Milled to flour-like consistency. Instantly soluble. Designed for baking, confectioneries, and beverages mix.</p>
-                      <ul class="text-xs space-y-2 mb-8 text-gray-600">
-                          <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Fast Dissolving</li>
-                          <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Uniform Texture</li>
-                      </ul>
+                      <p class="text-xs text-coco-gold font-bold uppercase mb-4">Mesh 80 - 100</p>
+                      <p class="text-gray-600 text-sm mb-6">Milled to flour-like consistency. High solubility, perfect for chocolate, baking, and premixes.</p>
+                      <a href="/products/organic-coconut-sugar-powder" class="text-coco-dark font-bold underline hover:text-coco-gold text-sm">View Specification &rarr;</a>
                   </div>
-                  <div class="p-8 pt-0 mt-auto">
-                      <a href="/products/organic-coconut-sugar-powder" class="w-full block text-center border-2 border-coco-dark text-coco-dark hover:bg-coco-dark hover:text-white font-bold py-3 rounded transition-colors">
-                          View Powder Specs
-                      </a>
+              </article>
+
+              <article class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-xl transition-shadow group">
+                  <div class="h-64 bg-gray-100 overflow-hidden">
+                      <img src="https://placehold.co/600x400/png?text=Blocks+%26+Nectar" alt="Coconut Sugar Block" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
                   </div>
+                  <div class="p-8">
+                      <h3 class="text-xl font-bold text-coco-dark mb-2">Block & Nectar</h3>
+                      <p class="text-xs text-coco-gold font-bold uppercase mb-4">Traditional & Liquid</p>
+                      <p class="text-gray-600 text-sm mb-6">Solid blocks for confectionery or liquid nectar (syrup) for beverages and sauces.</p>
+                      <a href="/products/coconut-nectar-syrup" class="text-coco-dark font-bold underline hover:text-coco-gold text-sm">View Specification &rarr;</a>
+                  </div>
+              </article>
+          </div>
+      </div>
+  </section>
+
+  <section id="specs" class="py-24 bg-gray-50 border-y border-gray-200">
+      <div class="max-w-7xl mx-auto px-6">
+          <div class="grid lg:grid-cols-2 gap-16 items-start">
+              
+              <div>
+                  <h2 class="text-3xl font-bold text-coco-dark mb-6">Strict Quality Control Parameters</h2>
+                  <p class="text-gray-600 mb-6 leading-relaxed">
+                      We understand that consistency is key for your production line. Our factory employs a rigorous <strong>Quality Control (QC)</strong> system to ensure every batch meets the physicochemical standards required by international food safety laws.
+                  </p>
+                  
+                  <h3 class="text-lg font-bold text-coco-dark mb-4">Why our specs matter:</h3>
+                  <ul class="space-y-3 mb-8">
+                      <li class="flex items-start gap-3">
+                          <span class="text-green-500 mt-1">✓</span>
+                          <span class="text-sm text-gray-700"><strong>Low Moisture (<2%):</strong> Prevents clumping and ensures longer shelf life (up to 24 months).</span>
+                      </li>
+                      <li class="flex items-start gap-3">
+                          <span class="text-green-500 mt-1">✓</span>
+                          <span class="text-sm text-gray-700"><strong>Controlled pH (6.0-7.0):</strong> Ensures neutral acidity, preventing curdling when mixed with dairy/milk.</span>
+                      </li>
+                      <li class="flex items-start gap-3">
+                          <span class="text-green-500 mt-1">✓</span>
+                          <span class="text-sm text-gray-700"><strong>High Purity:</strong> 99.8% solubility with minimal insoluble solids.</span>
+                      </li>
+                  </ul>
+
+                  <button onclick="window.openQuoteModal()" class="bg-coco-dark text-white px-6 py-3 font-bold rounded hover:bg-coco-black transition-colors">
+                      Download COA (Lab Result)
+                  </button>
               </div>
 
-               <div class="bg-white rounded border border-gray-200 overflow-hidden hover:shadow-xl transition-shadow group flex flex-col">
-                  <div class="h-60 overflow-hidden">
-                      <img src="https://placehold.co/600x400/png?text=Liquid+Nectar" alt="Coconut Nectar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200">
+                  <div class="bg-coco-dark text-white p-4">
+                      <h3 class="font-bold text-center">Technical Data Sheet (TDS) Comparison</h3>
                   </div>
-                  <div class="p-8 flex-grow">
-                      <h3 class="text-xl font-bold text-coco-dark mb-2">Organic Nectar</h3>
-                      <p class="text-xs text-gray-400 font-bold uppercase mb-4">Liquid Syrup</p>
-                      <p class="text-sm text-gray-500 mb-6">Low GI liquid sweetener. Nutrient-rich alternative to agave or maple syrup.</p>
-                       <ul class="text-xs space-y-2 mb-8 text-gray-600">
-                          <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Brix: 75-77%</li>
-                          <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Vegan Honey Alt</li>
-                      </ul>
-                  </div>
-                  <div class="p-8 pt-0 mt-auto">
-                      <a href="/products/coconut-nectar-syrup" class="w-full block text-center border-2 border-coco-dark text-coco-dark hover:bg-coco-dark hover:text-white font-bold py-3 rounded transition-colors">
-                          View Nectar Specs
-                      </a>
+                  <div class="overflow-x-auto">
+                      <table class="w-full text-sm text-left">
+                          <thead class="bg-gray-100 text-gray-700 uppercase text-xs">
+                              <tr>
+                                  <th class="px-6 py-4">Parameter</th>
+                                  <th class="px-6 py-4">Granules</th>
+                                  <th class="px-6 py-4">Fine Powder</th>
+                              </tr>
+                          </thead>
+                          <tbody class="divide-y divide-gray-200">
+                              <tr>
+                                  <td class="px-6 py-4 font-bold text-coco-dark">Mesh Size</td>
+                                  <td class="px-6 py-4">14 - 16</td>
+                                  <td class="px-6 py-4">80 - 100</td>
+                              </tr>
+                              <tr class="bg-gray-50">
+                                  <td class="px-6 py-4 font-bold text-coco-dark">Moisture</td>
+                                  <td class="px-6 py-4">Max 2.0%</td>
+                                  <td class="px-6 py-4">Max 2.5%</td>
+                              </tr>
+                              <tr>
+                                  <td class="px-6 py-4 font-bold text-coco-dark">Color</td>
+                                  <td class="px-6 py-4">Light to Dark Brown</td>
+                                  <td class="px-6 py-4">Pale Brown</td>
+                              </tr>
+                              <tr class="bg-gray-50">
+                                  <td class="px-6 py-4 font-bold text-coco-dark">Solubility</td>
+                                  <td class="px-6 py-4">High</td>
+                                  <td class="px-6 py-4">Instant</td>
+                              </tr>
+                              <tr>
+                                  <td class="px-6 py-4 font-bold text-coco-dark">Sucrose</td>
+                                  <td class="px-6 py-4">70% - 79%</td>
+                                  <td class="px-6 py-4">70% - 79%</td>
+                              </tr>
+                              <tr class="bg-gray-50">
+                                  <td class="px-6 py-4 font-bold text-coco-dark">Packaging</td>
+                                  <td class="px-6 py-4">25kg Paper Sack</td>
+                                  <td class="px-6 py-4">20kg Carton + Poly</td>
+                              </tr>
+                          </tbody>
+                      </table>
                   </div>
               </div>
           </div>
       </div>
   </section>
 
-  <section class="py-24 bg-white border-t border-gray-200">
-      <div class="max-w-7xl mx-auto px-6">
-          <div class="grid md:grid-cols-2 gap-12">
+  <section class="py-24 bg-white">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+          <span class="text-coco-gold font-bold uppercase tracking-widest text-sm">Traceability</span>
+          <h2 class="text-3xl font-bold text-coco-dark mt-2 mb-12">From Farm to Factory</h2>
+          
+          <ol class="relative border-l border-gray-200 text-left ml-6 md:ml-0 md:pl-0 space-y-12 md:space-y-0 md:grid md:grid-cols-4 md:gap-8 md:border-0">
+              <li class="mb-10 ml-6 md:ml-0 md:mb-0">
+                  <span class="absolute flex items-center justify-center w-8 h-8 bg-coco-gold rounded-full -left-4 md:relative md:left-0 md:mx-auto md:mb-4 ring-4 ring-white">
+                      <span class="text-white font-bold text-sm">1</span>
+                  </span>
+                  <h3 class="font-bold text-lg text-coco-dark mb-1 md:text-center">Harvesting</h3>
+                  <p class="text-sm text-gray-500 md:text-center">Farmers collect coconut sap (neera) twice daily. pH is checked immediately to prevent fermentation.</p>
+              </li>
               
-              <div class="relative rounded-xl overflow-hidden group">
-                  <div class="absolute inset-0 bg-coco-dark/90 z-10"></div>
-                  <img src="https://placehold.co/800x600/0D3B2E/FFFFFF/png?text=Warehouse+Stocks" class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-50">
-                  
-                  <div class="relative z-20 p-10 flex flex-col h-full items-start justify-center">
-                      <span class="bg-white text-coco-dark text-xs font-bold px-3 py-1 rounded mb-4">For Factories & Wholesalers</span>
-                      <h3 class="text-3xl font-bold text-white mb-4">Bulk Industrial Supply</h3>
-                      <p class="text-gray-300 mb-8 max-w-sm">Direct factory supply in 20kg/25kg Kraft Paper Sacks. FCL (20ft/40ft) shipments with complete export documentation.</p>
-                      <a href="/solutions/bulk-industrial-supply" class="bg-coco-gold text-coco-black px-6 py-3 font-bold rounded hover:bg-white transition-colors">
-                          Check Bulk Terms &rarr;
-                      </a>
+              <li class="mb-10 ml-6 md:ml-0 md:mb-0">
+                  <span class="absolute flex items-center justify-center w-8 h-8 bg-coco-dark rounded-full -left-4 md:relative md:left-0 md:mx-auto md:mb-4 ring-4 ring-white">
+                      <span class="text-white font-bold text-sm">2</span>
+                  </span>
+                  <h3 class="font-bold text-lg text-coco-dark mb-1 md:text-center">Processing</h3>
+                  <p class="text-sm text-gray-500 md:text-center">Sap is cooked at controlled temperatures until crystallization occurs (granulation).</p>
+              </li>
+
+              <li class="mb-10 ml-6 md:ml-0 md:mb-0">
+                  <span class="absolute flex items-center justify-center w-8 h-8 bg-coco-dark rounded-full -left-4 md:relative md:left-0 md:mx-auto md:mb-4 ring-4 ring-white">
+                      <span class="text-white font-bold text-sm">3</span>
+                  </span>
+                  <h3 class="font-bold text-lg text-coco-dark mb-1 md:text-center">Drying & Sieving</h3>
+                  <p class="text-sm text-gray-500 md:text-center">Oven drying to reduce moisture to < 2%. Sieving to ensure uniform Mesh 14-16 size.</p>
+              </li>
+
+              <li class="ml-6 md:ml-0">
+                  <span class="absolute flex items-center justify-center w-8 h-8 bg-coco-dark rounded-full -left-4 md:relative md:left-0 md:mx-auto md:mb-4 ring-4 ring-white">
+                      <span class="text-white font-bold text-sm">4</span>
+                  </span>
+                  <h3 class="font-bold text-lg text-coco-dark mb-1 md:text-center">Final QC & Packing</h3>
+                  <p class="text-sm text-gray-500 md:text-center">Metal detection, final moisture check, and bulk packing into 25kg Kraft bags.</p>
+              </li>
+          </ol>
+      </div>
+  </section>
+
+  <section class="py-24 bg-coco-light">
+      <div class="max-w-7xl mx-auto px-6">
+          <div class="grid md:grid-cols-2 gap-8">
+              
+              <div class="bg-white p-10 rounded-xl shadow-sm border border-gray-100 flex flex-col items-start">
+                  <div class="bg-green-100 p-3 rounded-lg mb-6 text-coco-dark">
+                      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                   </div>
+                  <h2 class="text-2xl font-bold text-coco-dark mb-3">Industrial & Bulk Supply</h2>
+                  <p class="text-gray-600 mb-6 flex-grow">
+                      We secure your supply chain with consistent volume. 
+                      <ul class="list-disc pl-5 space-y-2 text-sm text-gray-500 mb-6">
+                          <li>20ft Container (approx. 18 Tons)</li>
+                          <li>40ft Container (approx. 26 Tons)</li>
+                          <li>FOB Surabaya or CIF Terms</li>
+                      </ul>
+                  </p>
+                  <a href="/solutions/bulk-industrial-supply" class="bg-coco-dark text-white px-6 py-3 font-bold rounded hover:bg-coco-black w-full text-center">
+                      Explore Bulk Options
+                  </a>
               </div>
 
-              <div class="relative rounded-xl overflow-hidden group">
-                  <div class="absolute inset-0 bg-gray-900/90 z-10"></div>
-                  <img src="https://placehold.co/800x600/333/FFF/png?text=Retail+Packaging" class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-50">
-                  
-                  <div class="relative z-20 p-10 flex flex-col h-full items-start justify-center">
-                      <span class="bg-coco-gold text-coco-black text-xs font-bold px-3 py-1 rounded mb-4">For Brand Owners</span>
-                      <h3 class="text-3xl font-bold text-white mb-4">Private Label (OEM)</h3>
-                      <p class="text-gray-300 mb-8 max-w-sm">Launch your own organic sugar brand. We handle production, packaging (Pouch/Jar), and labeling. Low MOQ available.</p>
-                      <a href="/solutions/private-label-oem" class="bg-white text-coco-dark px-6 py-3 font-bold rounded hover:bg-coco-gold transition-colors">
-                          Start Private Label &rarr;
-                      </a>
+              <div class="bg-white p-10 rounded-xl shadow-sm border border-gray-100 flex flex-col items-start">
+                  <div class="bg-yellow-100 p-3 rounded-lg mb-6 text-coco-gold">
+                      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path></svg>
                   </div>
+                  <h2 class="text-2xl font-bold text-coco-dark mb-3">OEM & Private Label</h2>
+                  <p class="text-gray-600 mb-6 flex-grow">
+                      Build your own organic brand. We handle the production and packaging.
+                      <ul class="list-disc pl-5 space-y-2 text-sm text-gray-500 mb-6">
+                          <li>Standing Pouch (250g, 500g, 1kg)</li>
+                          <li>PET Jar / Glass Jar</li>
+                          <li>Custom Label Design Support</li>
+                      </ul>
+                  </p>
+                  <a href="/solutions/private-label-oem" class="bg-white border-2 border-coco-dark text-coco-dark px-6 py-3 font-bold rounded hover:bg-gray-50 w-full text-center">
+                      Start Private Label
+                  </a>
               </div>
 
           </div>
@@ -246,168 +332,43 @@ const faqSchema = {
   </section>
 
   <section class="py-24 bg-white">
-      <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-          <div>
-              <h2 class="text-3xl font-bold text-coco-dark mb-6">Industrial Applications</h2>
-              <p class="text-gray-600 mb-8 text-lg">Our coconut sugar is processed to meet the specific viscosity and solubility requirements of modern food manufacturing.</p>
-              
-              <div class="space-y-6">
-                  <div class="flex gap-4">
-                      <div class="w-12 h-12 bg-orange-100 text-orange-700 flex items-center justify-center rounded shrink-0">
-                          <span class="font-bold">01</span>
-                      </div>
-                      <div>
-                          <h4 class="font-bold text-coco-dark">Chocolate & Confectionery</h4>
-                          <p class="text-sm text-gray-500 mt-1">Low moisture content prevents blooming in chocolate. Provides a subtle caramel note that complements cacao.</p>
-                      </div>
-                  </div>
-                   <div class="flex gap-4">
-                      <div class="w-12 h-12 bg-blue-100 text-blue-700 flex items-center justify-center rounded shrink-0">
-                          <span class="font-bold">02</span>
-                      </div>
-                      <div>
-                          <h4 class="font-bold text-coco-dark">Healthy Beverages & Mixes</h4>
-                          <p class="text-sm text-gray-500 mt-1">High solubility rate (99%) ensures no residue in instant coffee mixes, energy drinks, or plant-based milks.</p>
-                      </div>
-                  </div>
-                   <div class="flex gap-4">
-                      <div class="w-12 h-12 bg-yellow-100 text-yellow-700 flex items-center justify-center rounded shrink-0">
-                          <span class="font-bold">03</span>
-                      </div>
-                      <div>
-                          <h4 class="font-bold text-coco-dark">Bakery & Granola</h4>
-                          <p class="text-sm text-gray-500 mt-1">Provides excellent Maillard reaction for better crust color and texture in cookies and energy bars.</p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="bg-gray-100 p-8 rounded-xl border border-gray-200">
-              <h3 class="text-xl font-bold text-coco-dark mb-6">Download Technical Data</h3>
-              <div class="space-y-4">
-                  <a href="#" class="flex items-center justify-between bg-white p-4 rounded shadow-sm hover:shadow transition-shadow border border-gray-200">
-                      <div class="flex items-center gap-3">
-                          <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                          <div class="text-left">
-                              <span class="block font-bold text-sm text-gray-800">TDS - Granulated Sugar</span>
-                              <span class="block text-xs text-gray-400">PDF, 1.2 MB</span>
-                          </div>
-                      </div>
-                      <span class="text-coco-gold font-bold text-sm">Download</span>
-                  </a>
-                  <a href="#" class="flex items-center justify-between bg-white p-4 rounded shadow-sm hover:shadow transition-shadow border border-gray-200">
-                      <div class="flex items-center gap-3">
-                          <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                          <div class="text-left">
-                              <span class="block font-bold text-sm text-gray-800">Organic Certification (EU/USDA)</span>
-                              <span class="block text-xs text-gray-400">PDF, 2.4 MB</span>
-                          </div>
-                      </div>
-                      <span class="text-coco-gold font-bold text-sm">Download</span>
-                  </a>
-              </div>
-              <div class="mt-8 pt-6 border-t border-gray-200">
-                  <p class="text-xs text-gray-500 mb-4">Need a specific analysis (Heavy Metal, Pesticide Residue)?</p>
-                  <button onclick="window.openQuoteModal()" class="text-coco-dark font-bold text-sm underline hover:text-coco-gold">Request Lab Analysis &rarr;</button>
-              </div>
-          </div>
-      </div>
-  </section>
-
-  <section class="py-24 bg-coco-light border-y border-gray-200">
-      <div class="max-w-7xl mx-auto px-6 text-center mb-16">
-          <span class="text-coco-gold font-bold tracking-widest uppercase text-sm">Traceability</span>
-          <h2 class="text-3xl font-bold text-coco-dark mt-2">From Tree to Container</h2>
-      </div>
-
-      <div class="max-w-7xl mx-auto px-6">
-          <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-0">
-              
-              <div class="relative text-center group">
-                  <div class="w-16 h-16 mx-auto bg-white border-2 border-coco-dark rounded-full flex items-center justify-center mb-4 z-10 relative group-hover:bg-coco-dark group-hover:text-white transition-colors">
-                      <span class="font-bold">01</span>
-                  </div>
-                  <div class="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-gray-300 -z-0"></div>
-                  <h4 class="font-bold text-gray-800">Harvesting</h4>
-                  <p class="text-xs text-gray-500 px-4 mt-2">Daily sap collection by registered farmers.</p>
-              </div>
-
-              <div class="relative text-center group">
-                  <div class="w-16 h-16 mx-auto bg-white border-2 border-coco-dark rounded-full flex items-center justify-center mb-4 z-10 relative group-hover:bg-coco-dark group-hover:text-white transition-colors">
-                      <span class="font-bold">02</span>
-                  </div>
-                   <div class="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-gray-300 -z-0"></div>
-                  <h4 class="font-bold text-gray-800">Cooking</h4>
-                  <p class="text-xs text-gray-500 px-4 mt-2">Controlled temperature to preserve nutrients.</p>
-              </div>
-
-              <div class="relative text-center group">
-                  <div class="w-16 h-16 mx-auto bg-white border-2 border-coco-dark rounded-full flex items-center justify-center mb-4 z-10 relative group-hover:bg-coco-dark group-hover:text-white transition-colors">
-                      <span class="font-bold">03</span>
-                  </div>
-                   <div class="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-gray-300 -z-0"></div>
-                  <h4 class="font-bold text-gray-800">Granulation</h4>
-                  <p class="text-xs text-gray-500 px-4 mt-2">Sieving to Mesh 14-16 & Oven Drying.</p>
-              </div>
-
-              <div class="relative text-center group">
-                  <div class="w-16 h-16 mx-auto bg-white border-2 border-coco-dark rounded-full flex items-center justify-center mb-4 z-10 relative group-hover:bg-coco-dark group-hover:text-white transition-colors">
-                      <span class="font-bold">04</span>
-                  </div>
-                   <div class="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-gray-300 -z-0"></div>
-                  <h4 class="font-bold text-gray-800">Quality Control</h4>
-                  <p class="text-xs text-gray-500 px-4 mt-2">Metal detection & moisture check.</p>
-              </div>
-
-              <div class="relative text-center group">
-                  <div class="w-16 h-16 mx-auto bg-white border-2 border-coco-dark rounded-full flex items-center justify-center mb-4 z-10 relative group-hover:bg-coco-dark group-hover:text-white transition-colors">
-                      <span class="font-bold">05</span>
-                  </div>
-                  <h4 class="font-bold text-gray-800">Shipping</h4>
-                  <p class="text-xs text-gray-500 px-4 mt-2">Stuffing at our warehouse.</p>
-              </div>
-
-          </div>
-      </div>
-  </section>
-
-  <section class="py-24 bg-white">
-      <div class="max-w-4xl mx-auto px-6">
-          <h2 class="text-3xl font-bold text-coco-dark mb-10 text-center">Frequently Asked Questions</h2>
+      <div class="max-w-3xl mx-auto px-6">
+          <h2 class="text-3xl font-bold text-center text-coco-dark mb-12">Frequently Asked Questions</h2>
           
           <div class="space-y-4">
-              <details class="group bg-gray-50 p-6 rounded-lg cursor-pointer open:bg-white open:shadow-md transition-all">
+              <details class="group bg-gray-50 p-6 rounded-lg cursor-pointer open:bg-white open:shadow-lg transition-all duration-300">
                   <summary class="flex justify-between items-center font-bold text-coco-dark list-none">
                       <span>What is the Minimum Order Quantity (MOQ)?</span>
                       <span class="transition group-open:rotate-180">
-                          <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                          <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
                       </span>
                   </summary>
                   <p class="text-gray-600 mt-4 text-sm leading-relaxed">
-                      For export, our MOQ is 1,000 kg (1 Metric Ton) for LCL shipments. However, to optimize shipping costs, we highly recommend a 20ft container (approx. 18-19 Tons). For OEM/Private Label, MOQ depends on the packaging type sourced.
+                      For export, our MOQ is <strong>1,000 kg (1 Metric Ton)</strong> for LCL shipments. However, to optimize shipping costs, we highly recommend a 20ft container (approx. 18-19 Tons). For OEM/Private Label, MOQ depends on the packaging type sourced.
                   </p>
               </details>
 
-              <details class="group bg-gray-50 p-6 rounded-lg cursor-pointer open:bg-white open:shadow-md transition-all">
+              <details class="group bg-gray-50 p-6 rounded-lg cursor-pointer open:bg-white open:shadow-lg transition-all duration-300">
                   <summary class="flex justify-between items-center font-bold text-coco-dark list-none">
-                      <span>What organic certifications do you have?</span>
+                      <span>Do you provide samples?</span>
                       <span class="transition group-open:rotate-180">
-                          <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                          <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
                       </span>
                   </summary>
                   <p class="text-gray-600 mt-4 text-sm leading-relaxed">
-                      We are fully certified for the global market. Our factory and farms are certified <strong>USDA NOP, EU Organic, and JAS (Japan)</strong>. We also hold HACCP, Halal, and Kosher certifications to meet food safety standards.
+                      Yes, we provide <strong>free samples (up to 500g)</strong> for industrial buyers. You only need to cover the shipping/courier cost (DHL/FedEx). The shipping cost will be deducted from your first commercial invoice.
                   </p>
               </details>
 
-              <details class="group bg-gray-50 p-6 rounded-lg cursor-pointer open:bg-white open:shadow-md transition-all">
+              <details class="group bg-gray-50 p-6 rounded-lg cursor-pointer open:bg-white open:shadow-lg transition-all duration-300">
                   <summary class="flex justify-between items-center font-bold text-coco-dark list-none">
-                      <span>What are your payment and shipping terms?</span>
+                      <span>What is the shelf life of your product?</span>
                       <span class="transition group-open:rotate-180">
-                          <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                          <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
                       </span>
                   </summary>
                   <p class="text-gray-600 mt-4 text-sm leading-relaxed">
-                      We typically accept T/T (Telegraphic Transfer) with a 50% Down Payment to start production and the balance against BL Copy. We can also accept Irrevocable L/C at sight for large contracts. We ship FOB Surabaya (Tanjung Perak Port) or CIF to your destination port.
+                      Our Organic Coconut Sugar has a shelf life of <strong>24 months (2 years)</strong> when stored in its original packaging in a cool, dry place away from direct sunlight.
                   </p>
               </details>
           </div>
@@ -415,9 +376,9 @@ const faqSchema = {
   </section>
 
   <section class="py-20 bg-coco-dark text-center px-6">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Start Your Procurement</h2>
-      <p class="text-gray-300 mb-8 max-w-2xl mx-auto">Get a competitive quote within 24 hours. We provide free samples for qualified industrial buyers.</p>
-      <button onclick="window.openQuoteModal()" class="bg-coco-gold text-coco-black px-10 py-4 font-bold rounded shadow hover:bg-white transition-colors">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to secure your supply?</h2>
+      <p class="text-gray-300 mb-8 max-w-2xl mx-auto">Get a competitive quote within 24 hours. We are ready to be your long-term partner.</p>
+      <button onclick="window.openQuoteModal()" class="bg-coco-gold text-coco-black px-10 py-4 font-bold text-lg rounded shadow-lg hover:bg-white transition-all">
           Contact Sales Team
       </button>
   </section>
