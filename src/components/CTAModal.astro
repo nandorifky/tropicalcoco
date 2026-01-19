@@ -79,21 +79,29 @@
 </div>
 
 <script is:inline>
+  // Fungsi Global untuk Membuka Modal
   window.openQuoteModal = function() {
     const modal = document.getElementById('quote-modal');
     const modalPanel = document.getElementById('modal-panel');
     const backdrop = document.getElementById('modal-backdrop');
 
-    if(modal) {
-        // FORCE DISPLAY BLOCK (Mengatasi masalah Tailwind 'hidden' yang macet)
-        modal.style.display = 'block';
-        modal.classList.remove('hidden');
-        
-        setTimeout(() => {
-            backdrop.classList.remove('opacity-0');
-            modalPanel.classList.remove('opacity-0', 'translate-y-4', 'sm:translate-y-0', 'sm:scale-95');
-        }, 10);
+    if (!modal || !modalPanel || !backdrop) {
+        console.error("Critical Error: Modal elements not found in DOM.");
+        return;
     }
+
+    // 1. Hapus state tersembunyi
+    modal.classList.remove('hidden');
+    modal.style.display = 'block';
+
+    // 2. FORCE REFLOW (PENTING!)
+    // Baris ini memaksa browser merender elemen dalam posisi 'block' 
+    // sebelum kita mainkan opacity-nya. Tanpa ini, transisi sering gagal.
+    void modal.offsetWidth; 
+
+    // 3. Masukkan animasi masuk
+    backdrop.classList.remove('opacity-0');
+    modalPanel.classList.remove('opacity-0', 'translate-y-4', 'sm:translate-y-0', 'sm:scale-95');
   }
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -110,19 +118,28 @@
       const form = document.getElementById('rfq-form');
 
       function closeModal() {
-        if (!modal) return;
+        if (!modal || !modalPanel || !backdrop) return;
+        
+        // 1. Mulai animasi keluar (tambah opacity-0)
         backdrop.classList.add('opacity-0');
         modalPanel.classList.add('opacity-0', 'translate-y-4', 'sm:translate-y-0', 'sm:scale-95');
+        
+        // 2. Tunggu animasi selesai baru hide total
         setTimeout(() => { 
             modal.classList.add('hidden'); 
-            // FORCE DISPLAY NONE (Mengembalikan status hilang)
             modal.style.display = 'none';
-        }, 300);
+        }, 300); // Sesuaikan dengan durasi 'duration-300' di Tailwind
       }
 
+      // ... (Sisa logic event listener biarkan sama, tapi pastikan closeModal dipanggil dengan benar)
       if (closeBtn) closeBtn.addEventListener('click', closeModal);
-      if (backdrop) backdrop.addEventListener('click', closeModal);
+      if (backdrop) backdrop.addEventListener('click', (e) => {
+          if (e.target === backdrop) closeModal();
+      });
 
+      // ... (Logic Tab WA/Email dan Form Submit biarkan sama)
+      
+      // LOGIC TAB & FORM SUBMIT (Copy dari file lama kamu, bagian ini aman)
       function setMode(mode) {
         if(!modeInput) return;
         modeInput.value = mode;
@@ -147,14 +164,14 @@
       if(form) {
           form.addEventListener('submit', (e) => {
             e.preventDefault();
+            // ... (Isi logika submit sama seperti sebelumnya)
             const mode = document.getElementById('submission-mode').value;
             const name = document.getElementById('inp-name').value;
             const company = document.getElementById('inp-company').value || "-";
-            const phone = document.getElementById('inp-phone').value;
             const type = document.getElementById('inp-type').value;
             const email = document.getElementById('inp-email').value;
             const message = document.getElementById('inp-message').value;
-
+            // ... (Logic kirim WA/Email)
             const ADMIN_WA = "6281234567890"; 
             const ADMIN_EMAIL = "sales@tropicalcocoindonesia.com"; 
 
@@ -163,6 +180,8 @@
                 window.open(`https://wa.me/${ADMIN_WA}?text=${text}`, '_blank');
             } else {
                 const subject = `RFQ from ${company} - ${type}`;
+                // const phone = ... (ambil phone juga jangan lupa)
+                const phone = document.getElementById('inp-phone').value;
                 const body = `Hi Tropical Coco,%0D%0A%0D%0ARFQ Details:%0D%0A*Name:* ${name}%0D%0A*Company:* ${company}%0D%0A*Phone:* ${phone}%0D%0A*Type:* ${type}%0D%0A%0D%0A*Message:*%0D%0A${message}`;
                 window.location.href = `mailto:${ADMIN_EMAIL}?subject=${encodeURIComponent(subject)}&body=${body}`;
             }
